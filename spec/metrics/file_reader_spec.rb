@@ -25,13 +25,40 @@ RSpec.describe Metrics::FileReader do
   end
 
   describe "#load" do
-    it "returns the summed value" do
-      expect(subject.load(time_with_data, time_with_data + 60)).to eq 133
+    it "returns the most recent value" do
+      expect(subject.load(time_with_data, time_with_data + 60)).to eq 90
     end
 
     it "stores it in value" do
       subject.load(time_with_data, time_with_data + 60)
-      expect(subject.value).to eq 133
+      expect(subject.value).to eq 90
+    end
+  end
+
+  describe "#variance" do
+    it "returns zero if the value is between low and high" do
+      expect(subject).to receive(:value).at_least(:once).and_return(42)
+      expect(subject.variance).to eq 0.0
+    end
+
+    it "returns a negative value if the metric is too low" do
+      expect(subject).to receive(:value).at_least(:once).and_return(38)
+      expect(subject.variance).to eq -0.7
+    end
+
+    it "returns a positive value if the metric is too high" do
+      expect(subject).to receive(:value).at_least(:once).and_return(53)
+      expect(subject.variance).to eq 0.8
+    end
+
+    it "clamps the value to 1.0 if the metric is really, really high" do
+      expect(subject).to receive(:value).at_least(:once).and_return(31337)
+      expect(subject.variance).to eq 1.0
+    end
+
+    it "clamps the value to -1.0 if the metric is really, really low" do
+      expect(subject).to receive(:value).at_least(:once).and_return(0)
+      expect(subject.variance).to eq -1.0
     end
   end
 end

@@ -9,53 +9,6 @@
         {
         "end": 1555002880000,
         "attributes": {},
-        "metric": "logstash.nginx.app_clio_com.status.503",
-        "interval": 1,
-        "start": 1555002850000,
-        "length": 4,
-        "query_index": 0,
-        "aggr": "max",
-        "scope": "region:prod_us_a",
-        "pointlist": [
-          [
-            1555002850000,
-            33
-        ],
-        [
-          1555002860000,
-          100
-        ],
-        [
-          1555002870000,
-          0
-        ],
-        [
-          1555002880000,
-          0
-        ]
-        ],
-        "expression": "sum:logstash.nginx.app_clio_com.status.503{region:prod_us_a}",
-        "unit": null,
-        "display_name": "logstash.nginx.app_clio_com.status.401"
-      }
-      ],
-      "to_date": 1555002908000,
-      "resp_version": 1,
-      "query": "sum:logstash.nginx.app_clio_com.status.503{region:prod_us_a}",
-      "message": "",
-      "group_by": []
-    }
-  ],
-  [
-    200,
-    {
-      "status": "ok",
-      "res_type": "time_series",
-      "from_date": 1555002848000,
-      "series": [
-        {
-        "end": 1555002880000,
-        "attributes": {},
         "metric": "nginx.net.request_per_s",
         "interval": 1,
         "start": 1555002850000,
@@ -89,6 +42,53 @@
       "to_date": 1555002908000,
       "resp_version": 1,
       "query": "avg:nginx.net.request_per_s{region:prod_us_a}",
+      "message": "",
+      "group_by": []
+    }
+  ],
+  [
+    200,
+    {
+      "status": "ok",
+      "res_type": "time_series",
+      "from_date": 1555002848000,
+      "series": [
+        {
+        "end": 1555002880000,
+        "attributes": {},
+        "metric": "logstash.nginx.app_clio_com.status.503",
+        "interval": 1,
+        "start": 1555002850000,
+        "length": 4,
+        "query_index": 0,
+        "aggr": "max",
+        "scope": "region:prod_us_a",
+        "pointlist": [
+          [
+            1555002850000,
+            33
+        ],
+        [
+          1555002860000,
+          100
+        ],
+        [
+          1555002870000,
+          0
+        ],
+        [
+          1555002880000,
+          0
+        ]
+        ],
+        "expression": "sum:logstash.nginx.app_clio_com.status.503{region:prod_us_a}",
+        "unit": null,
+        "display_name": "logstash.nginx.app_clio_com.status.401"
+      }
+      ],
+      "to_date": 1555002908000,
+      "resp_version": 1,
+      "query": "sum:logstash.nginx.app_clio_com.status.503{region:prod_us_a}",
       "message": "",
       "group_by": []
     }
