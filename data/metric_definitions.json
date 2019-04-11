@@ -1,42 +1,42 @@
 [
   {
     "name": "HTTP 503 errors",
-    "metric": "logstash.nginx.app_clio_com.status.503",
+    "metric": "max:logstash.nginx.app_clio_com.status.503{region:prod_us_a}",
     "too_low": -1,
     "expected": 0,
     "too_high": 1
   },
   {
     "name": "HTTP requests per second",
-    "metric": "nginx.net.request_per_s",
+    "metric": "avg:nginx.net.request_per_s{region:prod_us_a}",
     "too_low": 40,
     "expected": 45,
     "too_high": 50
   },
   {
     "name": "Database slow queries per second",
-    "metric": "mysql.performance.slow_queries",
+    "metric": "max:mysql.performance.slow_queries{region:prod_us_a}",
     "too_low": -1,
     "expected": 0.2,
     "too_high": 1
   },
   {
     "name": "Database SELECT statements per second",
-    "metric": "mysql.performance.com_select",
-    "too_low": 4500,
-    "expected": 6000,
-    "too_high": 7500
+    "metric": "sum:mysql.performance.com_select{region:prod_us_a}",
+    "too_low": 11000,
+    "expected": 14000,
+    "too_high": 17000
   },
   {
     "name": "Resque low queue latency",
-    "metric": "resque.perform_latency.95percentile",
+    "metric": "avg:resque.perform_latency.95percentile{region:prod_us_a,job_queue:low}",
     "too_low": 0.5,
     "expected": 2.5,
     "too_high": 10
   },
   {
     "name": "Resque jobs performed per second",
-    "metric": "resque.perform.count",
+    "metric": "avg:resque.perform.count{region:prod_us_a}.as_count()",
     "too_low": 4,
     "expected": 16,
     "too_high": 40,
