@@ -2,7 +2,8 @@
   <head></head>
   <body>
     <script src="./js/howler.min.js"></script>
-    <script>
+	<script src="./js/player.js"></script>
+	<script>
       var crowd = new Howl({
         src: ['./audio/crowd.mp3']
       });
@@ -10,6 +11,7 @@
       var monkey = new Howl({
           src: ['./audio/monkey.mp3']
         });
+
       function beginSoundscape() {
         crowd.play();
 
