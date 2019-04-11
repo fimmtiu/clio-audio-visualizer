@@ -35,7 +35,7 @@ module Metrics
 
     # The key this metric will be saved to in the resulting json
     def key
-      @definition["name"].downcase.gsub(/\s/, "_")
+      @definition["name"]
     end
   end
 end
