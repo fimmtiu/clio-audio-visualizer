@@ -9,7 +9,7 @@ module Metrics
     end
 
     def write(metrics)
-      summary = metrics.map { |metric| [metric.key, metric.value] }.to_h
+      summary = metrics.map { |metric| [metric.key, metric.variance] }.to_h
 
       File.open(file_path, 'w') do |file|
         file.puts(summary.to_json)
