@@ -13,8 +13,8 @@ RSpec.describe Metrics::FileReader do
 
     it "returns data that exists in the given range" do
       results = subject.read_data(time_with_data, time_with_data + 60)
-      expect(results.length).to eq 1
-      expect(results.first["query"]).to eq definition["metric"]
+      expect(results.length).to eq 2
+      expect(results[1]["query"]).to eq definition["metric"]
     end
   end
 

@@ -13,7 +13,7 @@ module Metrics
     # The function that is called when processing the results from datadog
     def process_results(results)
       op = @definition["metric"][0,3]
-      pointlist = results.dig(0, "series", 0, "pointlist") || []
+      pointlist = results.dig(1, "series", 0, "pointlist") || []
       pointlist.map!(&:last)
 
       case op
