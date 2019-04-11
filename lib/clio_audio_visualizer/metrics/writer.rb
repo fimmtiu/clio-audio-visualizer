@@ -12,6 +12,8 @@ module Metrics
       summary = metrics.map { |metric| [metric.key, metric.variance] }.to_h
 
       File.open(file_path, 'w') do |file|
+        puts(summary.to_json)
+        puts
         file.puts(summary.to_json)
       end
     end
