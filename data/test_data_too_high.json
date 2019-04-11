@@ -1,0 +1,271 @@
+[
+  {
+    "status": "ok",
+    "res_type": "time_series",
+    "from_date": 1555002848000,
+    "series": [
+      {
+        "end": 1555002880000,
+        "attributes": {},
+        "metric": "logstash.nginx.app_clio_com.status.503",
+        "interval": 1,
+        "start": 1555002850000,
+        "length": 4,
+        "query_index": 0,
+        "aggr": "max",
+        "scope": "region:prod_us_a",
+        "pointlist": [
+          [
+            1555002850000,
+            0
+          ],
+          [
+            1555002860000,
+            100
+          ],
+          [
+            1555002870000,
+            0
+          ],
+          [
+            1555002880000,
+            0
+          ]
+        ],
+        "expression": "sum:logstash.nginx.app_clio_com.status.503{region:prod_us_a}",
+        "unit": null,
+        "display_name": "logstash.nginx.app_clio_com.status.401"
+      }
+    ],
+    "to_date": 1555002908000,
+    "resp_version": 1,
+    "query": "sum:logstash.nginx.app_clio_com.status.503{region:prod_us_a}",
+    "message": "",
+    "group_by": []
+  },
+
+  {
+    "status": "ok",
+    "res_type": "time_series",
+    "from_date": 1555002848000,
+    "series": [
+      {
+        "end": 1555002880000,
+        "attributes": {},
+        "metric": "nginx.net.request_per_s",
+        "interval": 1,
+        "start": 1555002850000,
+        "length": 4,
+        "query_index": 0,
+        "aggr": "avg",
+        "scope": "region:prod_us_a",
+        "pointlist": [
+          [
+            1555002850000,
+            100
+          ],
+          [
+            1555002860000,
+            120
+          ],
+          [
+            1555002870000,
+            80
+          ],
+          [
+            1555002880000,
+            90
+          ]
+        ],
+        "expression": "avg:nginx.net.request_per_s{region:prod_us_a}",
+        "unit": null,
+        "display_name": "nginx.net.request_per_s"
+      }
+    ],
+    "to_date": 1555002908000,
+    "resp_version": 1,
+    "query": "avg:nginx.net.request_per_s{region:prod_us_a}",
+    "message": "",
+    "group_by": []
+  },
+
+  {
+    "status": "ok",
+    "res_type": "time_series",
+    "from_date": 1555002848000,
+    "series": [
+      {
+        "end": 1555002880000,
+        "attributes": {},
+        "metric": "mysql.performance.slow_queries",
+        "interval": 1,
+        "start": 1555002850000,
+        "length": 4,
+        "query_index": 0,
+        "aggr": "max",
+        "scope": "region:prod_us_a",
+        "pointlist": [
+          [
+            1555002850000,
+            0.8
+          ],
+          [
+            1555002860000,
+            2.1
+          ],
+          [
+            1555002870000,
+            2.4
+          ],
+          [
+            1555002880000,
+            0.1
+          ]
+        ],
+        "expression": "max:mysql.performance.slow_queries{region:prod_us_a}",
+        "unit": null,
+        "display_name": "mysql.performance.slow_queries"
+      }
+    ],
+    "to_date": 1555002908000,
+    "resp_version": 1,
+    "query": "max:mysql.performance.slow_queries{region:prod_us_a}",
+    "message": "",
+    "group_by": []
+  },
+
+  {
+    "status": "ok",
+    "res_type": "time_series",
+    "from_date": 1555002848000,
+    "series": [
+      {
+        "end": 1555002880000,
+        "attributes": {},
+        "metric": "mysql.performance.com_select",
+        "interval": 1,
+        "start": 1555002850000,
+        "length": 4,
+        "query_index": 0,
+        "aggr": "sum",
+        "scope": "region:prod_us_a",
+        "pointlist": [
+          [
+            1555002850000,
+            18000
+          ],
+          [
+            1555002860000,
+            19000
+          ],
+          [
+            1555002870000,
+            16000
+          ],
+          [
+            1555002880000,
+            17000
+          ]
+        ],
+        "expression": "sum:mysql.performance.com_select{region:prod_us_a}",
+        "unit": null,
+        "display_name": "mysql.performance.com_select"
+      }
+    ],
+    "to_date": 1555002908000,
+    "resp_version": 1,
+    "query": "sum:mysql.performance.com_select{region:prod_us_a}",
+    "message": "",
+    "group_by": []
+  },
+
+  {
+    "status": "ok",
+    "res_type": "time_series",
+    "from_date": 1555002848000,
+    "series": [
+      {
+        "end": 1555002880000,
+        "attributes": {},
+        "metric": "resque.perform_latency.95percentile",
+        "interval": 1,
+        "start": 1555002850000,
+        "length": 4,
+        "query_index": 0,
+        "aggr": "avg",
+        "scope": "region:prod_us_a",
+        "pointlist": [
+          [
+            1555002850000,
+            2.1
+          ],
+          [
+            1555002860000,
+            5.0
+          ],
+          [
+            1555002870000,
+            15.0
+          ],
+          [
+            1555002880000,
+            20.0
+          ]
+        ],
+        "expression": "avg:resque.perform_latency.95percentile{region:prod_us_a,job_queue:low}",
+        "unit": null,
+        "display_name": "resque.perform_latency.95percentile"
+      }
+    ],
+    "to_date": 1555002908000,
+    "resp_version": 1,
+    "query": "avg:resque.perform_latency.95percentile{region:prod_us_a,job_queue:low}",
+    "message": "",
+    "group_by": []
+  },
+
+  {
+    "status": "ok",
+    "res_type": "time_series",
+    "from_date": 1555002848000,
+    "series": [
+      {
+        "end": 1555002880000,
+        "attributes": {},
+        "metric": "resque.perform.count",
+        "interval": 1,
+        "start": 1555002850000,
+        "length": 4,
+        "query_index": 0,
+        "aggr": "avg",
+        "scope": "region:prod_us_a",
+        "pointlist": [
+          [
+            1555002850000,
+            30
+          ],
+          [
+            1555002860000,
+            50
+          ],
+          [
+            1555002870000,
+            60
+          ],
+          [
+            1555002880000,
+            70
+          ]
+        ],
+        "expression": "avg:resque.perform.count{region:prod_us_a}.as_count()",
+        "unit": null,
+        "display_name": "resque.perform.count"
+      }
+    ],
+    "to_date": 1555002908000,
+    "resp_version": 1,
+    "query": "avg:resque.perform.count{region:prod_us_a}.as_count()",
+    "message": "",
+    "group_by": []
+  }
+]
