@@ -12,8 +12,7 @@ RSpec.describe Metrics::Writer do
         double(key: "baz", value: 1.0),
       ]
       subject.write(metrics)
-      result = JSON.parse(File.read(filename))
-      expect(result).to eq metrics.map { |m| [m.key, m.value] }.to_h
+      expect(File.read(filename)).to eq "{\"foo\":-0.7,\"bar\":0.0,\"baz\":1.0}\n"
     end
   end
 end
