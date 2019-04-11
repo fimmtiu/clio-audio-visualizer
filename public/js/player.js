@@ -1,7 +1,44 @@
-var forest_base = new Howl({
-	src: ["../audio/forest_base.wav"]
+Howler.volume(0.3);
+let actors = {}
+
+actors["crowd"] = new Howl({
+	src: ['./audio/crowd.mp3'],
+	volume: 0.5
 });
 
-var id1 = forest_base.play();
+actors["monkey"] = new Howl({
+	src: ['./audio/monkey.mp3'],
+	volume: 0.5
+});
 
-forest_base.fade(0, 1, 2000, id1);
+actors["forest"] = new Howl({
+	src: ['/audio/forest_base.wav'],
+	volume: 0.5,
+	loop: true
+});
+
+actors["stream"] = new Howl({
+	src: ['./audio/stream_base.wav'],
+	volume: 0.5,
+	loop: true
+});
+
+function beginSoundscape() {
+	actors["forest"].play();
+	actors["stream"].play();
+
+	actors["forest"].fade(0, 0.5, 2500)
+	actors["stream"].fade(0, 0.5, 4000)
+
+	processVolumeEvents();
+}
+
+function processVolumeEvents() {
+	callFunctionOnArrayElementsAfterInterval(volumeEvents, function (volumeEvent) {
+		for (var k in volumeEvent) {
+			const currentVolume = actors[k].volume();
+			console.log("setting volume on actor")
+			actors[k].fade(currentVolume, volumeEvent[k], 250);
+		}
+	}, 5000);
+}

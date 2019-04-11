@@ -1,4 +1,4 @@
-function loopThroughArray(array, callback, interval) {
+function callFunctionOnArrayElementsAfterInterval(array, callback, interval) {
     var newLoopTimer = new LoopTimer(function (time) {
         var element = array.shift();
         callback(element, time - start);
