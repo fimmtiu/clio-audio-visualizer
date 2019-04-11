@@ -1,8 +1,7 @@
 module Metrics
   class DatadogReader < Metric
-    def load(from, to)
-      results = DATADOG_API.get_points(datadog_query, from, to)
-      @value = process_results(results)
+    def read_data(from, to)
+      DATADOG_API.get_points(datadog_query, from, to)
     end
   end
 end

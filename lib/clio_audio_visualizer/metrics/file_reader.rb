@@ -2,13 +2,16 @@ module Metrics
   class FileReader < Metric
     def initialize(definition, file_path)
       @data = JSON.parse(File.read(file_path))
-      super
+      super(definition)
     end
 
-    def load(from, to)
+    def read_data(from, to)
       @data.select do |response|
-        pointlist = response.dig(1, "series", 0, "pointlist") || []
-        response["query"] == datadog_query && pointlist.any? { |point| point.first.between?(from, to) }
+        next if response["query"] != datadog_query
+        pointlist = response.dig("series", 0, "pointlist") || []
+        pointlist.any? do |point|
+          Time.at(point.first / 1000).between?(from, to)
+        end
       end
     end
   end
