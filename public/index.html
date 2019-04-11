@@ -18,9 +18,24 @@
         volume: 0.5
       });
 
+      actors["forest"] = new Howl({
+        src: ['/audio/forest_base.wav'],
+        volume: 0.5,
+		loop: true
+      });
+
+      actors["stream"] = new Howl({
+        src: ['./audio/stream_base.wav'],
+        volume: 0.5,
+		loop: true
+      });
+
       function beginSoundscape() {
-        actors["crowd"].play();
-        actors["monkey"].play();
+        actors["forest"].play();
+        actors["stream"].play();
+		
+        actors["forest"].fade(0, 0.5, 2500)
+        actors["stream"].fade(0, 0.5, 4000)
 
         processVolumeEvents();
       }
