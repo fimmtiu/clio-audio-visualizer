@@ -41,30 +41,17 @@ npm run serve
 Then go to [http://localhost:8080/index.html](http://localhost:8080/index.html).
 
 
-### Testing Metrics
+### Starting the back end
 
-Use `bin/console` to test fetching & writing metrics.
-
-Instantiating the metrics:
-
-```ruby
-# loading from Datadog
-metrics = Metrics::Loader.new.load("data/metric_definitions.json")
-# loading from a local file
-metrics = Metrics::Loader.new(data_file: "data/test_data.json").load("data/metric_definitions.json")
+```
+ruby -Ilib exe/audio-visualizer-back-end [-i interval] [input data file]
 ```
 
-Fetching metric, using values over the last minute:
+Options:
+* `-i`, `--poll-interval`: Seconds to wait between polling for new data.
+* `input data file`: Optional JSON file containing canned Datadog responses, for testing.
 
-```ruby
-metrics.first.load(Time.now - 60, Time.now)
-```
-
-Writing metrics:
-
-```ruby
-Metrics::Writer.write(metrics)
-```
+If the input data file isn't present, it will poll Datadog's API instead.
 
 ## Contributing
 
@@ -75,3 +62,13 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/fimmti
 * Signal deploys going out with a happy goat sound.
 
 * Take non-peak times into account instead of going crazy at the end of the day.
+
+* Shark attack at the end of the demo
+
+## Commands for the demo
+
+```
+exe/run_demo
+```
+
+Hit Enter whenever you're ready to start the next segment.
