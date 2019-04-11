@@ -32,6 +32,15 @@ Make sure you modify the local `.env` file and set the appropriate environment v
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
+# Starting the front end
+
+```
+npm install
+npm run serve
+```
+Then go to [http://localhost:8080/index.html](http://localhost:8080/index.html).
+
+
 ### Testing Metrics
 
 Use `bin/console` to test fetching & writing metrics.
