@@ -4,6 +4,6 @@ const metricsToSoundNames = {
   "Database slow queries per second": "crow",
   "Database SELECT statements per second": "stream",
   "Resque low queue latency": "insects",
-  "Deploy": "goat",
+  "Deploy": "happy_goat",
   "Resque jobs performed per second": "wind"
 }

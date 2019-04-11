@@ -29,6 +29,12 @@ actors["insects"] = new Howl({
 	loop: true
 });
 
+actors["happy_goat"] = new Howl({
+	src: ['./audio/happy_goat.wav'],
+	volume: 1.0,
+	loop: false
+});
+
 function adjustVolumesFromEvents(soundNamesAndScores) {
 	for (var name in soundNamesAndScores) {
 		if (actors[name]) {
