@@ -63,6 +63,8 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/fimmti
 
 * Take non-peak times into account instead of going crazy at the end of the day.
 
+* Shark attack at the end of the demo
+
 ## Commands for the demo
 
 ```

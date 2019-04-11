@@ -5,12 +5,17 @@ require "rspec/core/rake_task"
 
 RSpec::Core::RakeTask.new(:spec)
 
-task :default => :spec
+task default: :spec
 
 def set_variance(variance_key, value)
-  file_path = ENV['VARIANCES_FILE_PATH']
+  file_path = ENV['VARIANCES_FILE_PATH'] || "public/data.json"
 
-  current = JSON.parse(File.read(file_path))
+  if File.exist?(file_path)
+    current = JSON.parse(File.read(file_path))
+  else
+    metrics = JSON.parse(File.read("data/metric_definitions.json"))
+    current = metrics.map { |m| [m["name"], 0.0] }.to_h
+  end
 
   File.open(file_path, "w") do |file|
     current[variance_key] = value
