@@ -1,0 +1,26 @@
+{
+  "name": "clio_audio_visualizer",
+  "version": "1.0.0",
+  "description": "Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/clio_audio_visualizer`. To experiment with that code, run `bin/console` for an interactive prompt.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "node_modules/http-server/bin/http-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fimmtiu/clio_audio_visualizer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fimmtiu/clio_audio_visualizer/issues"
+  },
+  "homepage": "https://github.com/fimmtiu/clio_audio_visualizer#readme",
+  "dependencies": {
+    "http-server": "^0.11.1"
+  }
+}
