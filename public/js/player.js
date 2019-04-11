@@ -3,23 +3,29 @@ let actors = {}
 
 actors["crowd"] = new Howl({
 	src: ['./audio/crowd.mp3'],
-	volume: 0.5
+	volume: 0.0
 });
 
 actors["monkey"] = new Howl({
-	src: ['./audio/monkey.mp3'],
-	volume: 0.5
+	src: ['./audio/monkeys_quiet.wav'],
+	volume: 0.0
 });
 
 actors["forest"] = new Howl({
 	src: ['/audio/forest_base.wav'],
-	volume: 0.5,
+	volume: 0.0,
 	loop: true
 });
 
 actors["stream"] = new Howl({
 	src: ['./audio/stream_base.wav'],
-	volume: 0.5,
+	volume: 0.0,
+	loop: true
+});
+
+actors["insects"] = new Howl({
+	src: ['./audio/frogs_insects.wav'],
+	volume: 0.0,
 	loop: true
 });
 

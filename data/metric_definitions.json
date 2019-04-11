@@ -1,17 +1,17 @@
 [
   {
-    "name": "HTTP 503 errors",
-    "metric": "sum:logstash.nginx.app_clio_com.status.503{region:prod_us_a}",
-    "too_low": -1,
-    "expected": 0,
-    "too_high": 1
-  },
-  {
     "name": "HTTP requests per second",
     "metric": "avg:nginx.net.request_per_s{region:prod_us_a}",
     "too_low": 40,
     "expected": 45,
     "too_high": 50
+  },
+  {
+    "name": "HTTP 503 errors",
+    "metric": "sum:logstash.nginx.app_clio_com.status.503{region:prod_us_a}",
+    "too_low": -1,
+    "expected": 0,
+    "too_high": 1
   },
   {
     "name": "Database slow queries per second",

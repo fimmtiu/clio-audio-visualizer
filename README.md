@@ -60,3 +60,9 @@ Metrics::Writer.write(metrics)
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/fimmtiu/clio_audio_visualizer.
+
+## TODO
+
+* Signal deploys going out with a happy goat sound.
+
+* 
