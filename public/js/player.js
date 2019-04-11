@@ -29,14 +29,14 @@ actors["insects"] = new Howl({
 	loop: true
 });
 
-function adjustVolumesFromEvents(volumeEvents) {
-	volumeEvents.forEach(function (volumeEvent) {
-		for (var k in volumeEvent) {
-			const currentVolume = actors[k].volume();
+function adjustVolumesFromEvents(soundNamesAndScores) {
+	for (var name in soundNamesAndScores) {
+		if (actors[name]) {
+			const currentVolume = actors[name].volume();
 			console.log("setting volume on actor")
-			actors[k].fade(currentVolume, volumeEvent[k], 250);
+			actors[name].fade(currentVolume, soundNamesAndScores[name], 250);
 		}
-	});
+	}
 }
 
 function beginSoundscape() {

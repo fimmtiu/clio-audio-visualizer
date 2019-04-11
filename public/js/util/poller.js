@@ -9,9 +9,20 @@ function getDataFromServer() {
     });
 }
 
+function mapNames(eventData) {
+  let nameOfSoundsAndScores = {};
+
+  for (var k in eventData) {
+    const nameOfSound = metricsToSoundNames[k];
+    nameOfSoundsAndScores[nameOfSound] = eventData[k];
+  }
+  return nameOfSoundsAndScores;
+}
+
 function processVolumeChangesFromNewEvents(callback) {
   getDataFromServer().then(function(data) {
-    callback(data);
+    const mappings = mapNames(data);
+    callback(mappings);
     setTimeout(processVolumeChangesFromNewEvents.bind(this, callback), 2000);
   });
 }
