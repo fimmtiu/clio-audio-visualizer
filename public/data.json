@@ -1,8 +1,0 @@
-{
-  "HTTP requests per second": 1.0,
-  "HTTP 503 errors": 1.0,
-  "Database slow queries per second": 1.0,
-  "Database SELECT statements per second": 1.0,
-  "Resque low queue latency": 1.0,
-  "Resque jobs performed per second": 1.0
-}

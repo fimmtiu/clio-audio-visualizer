@@ -1,0 +1,43 @@
+#!/usr/bin/env ruby
+
+require "clio_audio_visualizer"
+require "optparse"
+
+STATUS_FILE = "public/data.json"
+METRICS_FILE = "data/metric_definitions.json"
+
+interval = 60 # seconds
+OptionParser.new do |opts|
+  opts.banner = "Usage: audio-viualizer-back-end [-i poll interval] [input data file]"
+
+  opts.on("-i", "--poll-interval=INTERVAL", "Seconds between polling for new data") do |i|
+    interval = i.to_i
+  end
+end.parse!
+
+data_file = ARGV[0]
+metrics = Metrics::Loader.new(data_file: data_file).load(METRICS_FILE)
+
+loop do
+  # Load the data from Datadog or a file.
+  metrics.reject(&:done?).each do |metric|
+    if data_file
+      # The contents of the file are in the past, so we have to fake it.
+      metric.load(Time.at(0), Time.at(2**32))
+    else
+      metric.load(Time.now - interval, Time.now)
+    end
+  end
+
+  # Write the metric variances to the status file.
+  Metrics::Writer.new(STATUS_FILE).write(metrics)
+
+  # Exit the loop if we've chewed through all the test data.
+  break if metrics.all?(&:done?)
+  sleep(interval)
+end
+
+# When the back end exits, delete the status file to tell the front end to be quiet.
+at_exit do
+  File.unlink(STATUS_FILE)
+end

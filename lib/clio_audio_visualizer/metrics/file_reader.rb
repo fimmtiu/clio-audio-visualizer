@@ -18,5 +18,9 @@ module Metrics
 
       result || []
     end
+
+    def done?
+      @data.empty?
+    end
   end
 end

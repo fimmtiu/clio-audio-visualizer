@@ -12,5 +12,6 @@
 
 .env
 /node_modules/
+public/data.json
 
 .DS_Store

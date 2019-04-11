@@ -74,4 +74,4 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/fimmti
 
 * Signal deploys going out with a happy goat sound.
 
-* 
+* Take non-peak times into account instead of going crazy at the end of the day.

@@ -33,6 +33,10 @@ module Metrics
       raise NotImplementedError
     end
 
+    def done?
+      raise NotImplementedError
+    end
+
     # How far off the expected value it is. -1.0 is really, really low; 1.0 is super high.
     # (This method is soooooooooooooooooooo ugly right now.)
     def variance
@@ -48,10 +52,8 @@ module Metrics
 
       # Translate the difference from a value to a float in the [-1.0, 1.0] range.
       if value > expected
-        puts "result: #{difference.to_f / max_difference}"
         difference.to_f / max_difference
       else
-        puts "result: #{difference.to_f / min_difference}"
         -(difference.to_f / min_difference)
       end
     end
