@@ -2,14 +2,16 @@ require 'json'
 
 module Metrics
   class Writer
-    def self.write(metrics)
-      summary = {}
+    attr_reader :file_path
 
-      metrics.each do |metric|
-        summary[metric.key] = metric.value
-      end
+    def initialize(file_path)
+      @file_path = file_path
+    end
 
-      File.open(ENV['METRICS_FILE'], 'w') do |file|
+    def write(metrics)
+      summary = metrics.map { |metric| [metric.key, metric.variance] }.to_h
+
+      File.open(file_path, 'w') do |file|
         file.puts(summary.to_json)
       end
     end

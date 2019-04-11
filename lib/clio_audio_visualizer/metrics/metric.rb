@@ -13,7 +13,7 @@ module Metrics
     # The function that is called when processing the results from datadog
     def process_results(results)
       op = @definition["metric"][0,3]
-      pointlist = results.dig(0, "series", 0, "pointlist") || []
+      pointlist = results.dig(1, "series", 0, "pointlist") || []
       pointlist.map!(&:last)
 
       case op
@@ -31,6 +31,29 @@ module Metrics
 
     def read_data(_from, _to)
       raise NotImplementedError
+    end
+
+    # How far off the expected value it is. -1.0 is really, really low; 1.0 is super high.
+    # (This method is soooooooooooooooooooo ugly right now.)
+    def variance
+      expected, too_high, too_low = @definition.values_at("expected", "too_high", "too_low")
+      return 0 if value.between?(too_low, too_high)
+      difference = value - expected
+
+      # Clamp the difference between our largest and smallest allowed values.
+      max_difference = (too_high - expected) * 2
+      min_difference = (too_low - expected) * 2
+      difference = [difference, max_difference].min
+      difference = [difference, min_difference].max
+
+      # Translate the difference from a value to a float in the [-1.0, 1.0] range.
+      if value > expected
+        puts "result: #{difference.to_f / max_difference}"
+        difference.to_f / max_difference
+      else
+        puts "result: #{difference.to_f / min_difference}"
+        -(difference.to_f / min_difference)
+      end
     end
 
     # The key this metric will be saved to in the resulting json
