@@ -36,22 +36,22 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 Use `bin/console` to test fetching & writing metrics.
 
-Instantiating a new metric:
+Instantiating the metrics:
 
 ```ruby
-metric = Metrics::UnauthorizedMetric.new(74)
+metrics = Metrics::Loader.load("data/metric_definitions.json")
 ```
 
-Fetching a metric from DataDog:
+Fetching metric, using values over the last minute:
 
 ```ruby
-metric = Metrics::UnauthorizedMetric.from_datadog(Time.now - 60, Time.now)
+metrics.first.load(Time.now - 60, Time.now)
 ```
 
 Writing metrics:
 
 ```ruby
-Metrics::Writer.write([metric])
+Metrics::Writer.write(metrics)
 ```
 
 ## Contributing
