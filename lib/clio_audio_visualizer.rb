@@ -1,7 +1,6 @@
 require "clio_audio_visualizer/version"
 require "dotenv/load"
 
-require "datadog_api"
 require "clio_audio_visualizer/metrics/metric"
 require "clio_audio_visualizer/metrics/file_reader"
 require "clio_audio_visualizer/metrics/datadog_reader"
