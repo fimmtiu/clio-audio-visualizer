@@ -24,7 +24,7 @@ actors["stream"] = new Howl({
 });
 
 actors["insects"] = new Howl({
-	src: ['./audio/frogs_insects.wav']
+	src: ['./audio/frogs_insects.wav'],
 	volume: 0.0,
 	loop: true
 });
