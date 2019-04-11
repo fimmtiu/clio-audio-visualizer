@@ -44,6 +44,9 @@ actors["stream"] = new Howl({
 });
 
 function adjustVolumesFromEvents(soundNamesAndScores) {
+	// always establish a base volume, in case it was previously silenced
+	Howler.volume(0.3);
+
 	for (var name in soundNamesAndScores) {
 		if (actors[name]) {
 			const currentVolume = actors[name].volume();
@@ -53,6 +56,10 @@ function adjustVolumesFromEvents(soundNamesAndScores) {
 	}
 }
 
+function errorCallback() {
+	Howler.volume(0);
+}
+
 function beginSoundscape() {
 	actors["forest"].play();
 	actors["stream"].play();
@@ -60,5 +67,5 @@ function beginSoundscape() {
 	actors["forest"].fade(0, 0.5, 2500)
 	actors["stream"].fade(0, 0.5, 4000)
 
-	processVolumeChangesFromNewEvents(adjustVolumesFromEvents);
+	processVolumeChangesFromNewEvents(adjustVolumesFromEvents, errorCallback);
 }
