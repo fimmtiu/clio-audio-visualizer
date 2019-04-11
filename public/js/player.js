@@ -23,6 +23,16 @@ actors["stream"] = new Howl({
 	loop: true
 });
 
+function adjustVolumesFromEvents(volumeEvents) {
+	volumeEvents.forEach(function (volumeEvent) {
+		for (var k in volumeEvent) {
+			const currentVolume = actors[k].volume();
+			console.log("setting volume on actor")
+			actors[k].fade(currentVolume, volumeEvent[k], 250);
+		}
+	});
+}
+
 function beginSoundscape() {
 	actors["forest"].play();
 	actors["stream"].play();
@@ -30,15 +40,5 @@ function beginSoundscape() {
 	actors["forest"].fade(0, 0.5, 2500)
 	actors["stream"].fade(0, 0.5, 4000)
 
-	processVolumeEvents();
-}
-
-function processVolumeEvents() {
-	callFunctionOnArrayElementsAfterInterval(volumeEvents, function (volumeEvent) {
-		for (var k in volumeEvent) {
-			const currentVolume = actors[k].volume();
-			console.log("setting volume on actor")
-			actors[k].fade(currentVolume, volumeEvent[k], 250);
-		}
-	}, 5000);
+	processVolumeChangesFromNewEvents(adjustVolumesFromEvents);
 }
