@@ -16,9 +16,14 @@ OptionParser.new do |opts|
 end.parse!
 
 data_file = ARGV[0]
+if data_file.nil? && interval < 60
+  $stderr.puts "When using the Datadog API, you shouldn't hit it more often than once a minute."
+  exit 1
+end
+
 metrics = Metrics::Loader.new(data_file: data_file).load(METRICS_FILE)
 
-loop do
+until metrics.all?(&:done?)
   # Load the data from Datadog or a file.
   metrics.reject(&:done?).each do |metric|
     if data_file
@@ -32,8 +37,7 @@ loop do
   # Write the metric variances to the status file.
   Metrics::Writer.new(STATUS_FILE).write(metrics)
 
-  # Exit the loop if we've chewed through all the test data.
-  break if metrics.all?(&:done?)
+  # TO DO: Take the time spent in the loop into account when calculating how long to sleep.
   sleep(interval)
 end
 
