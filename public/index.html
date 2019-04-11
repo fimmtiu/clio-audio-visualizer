@@ -2,21 +2,37 @@
   <head></head>
   <body>
     <script src="./js/howler.min.js"></script>
+    <script src="./js/util/loop_timer.js"></script>
+    <script type="text/javascript" src="./test_data/volume_events.js"></script>
     <script>
-      var crowd = new Howl({
-        src: ['./audio/crowd.mp3']
+      Howler.volume(0.3);
+      let actors = {}
+
+      actors["crowd"] = new Howl({
+        src: ['./audio/crowd.mp3'],
+        volume: 0.5
       });
 
-      var monkey = new Howl({
-          src: ['./audio/monkey.mp3']
-        });
-      function beginSoundscape() {
-        crowd.play();
+      actors["monkey"] = new Howl({
+        src: ['./audio/monkey.mp3'],
+        volume: 0.5
+      });
 
-        setTimeout(function() {
-          crowd.fade(1, 0, 1000);
-          monkey.play()
-        }, 1000);
+      function beginSoundscape() {
+        actors["crowd"].play();
+        actors["monkey"].play();
+
+        processVolumeEvents();
+      }
+
+      function processVolumeEvents() {
+        loopThroughArray(volumeEvents, function (volumeEvent) {
+          for (var k in volumeEvent) {
+            const currentVolume = actors[k].volume();
+            console.log("setting volume on actor")
+            actors[k].fade(currentVolume, volumeEvent[k], 250);
+          }
+        }, 5000);
       }
     </script>
     <marquee><button onclick="beginSoundscape()">Experience the soothing sounds of chainsaws...in a rain forest</button></marquee>
