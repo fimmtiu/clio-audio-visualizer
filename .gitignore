@@ -11,4 +11,5 @@
 .rspec_status
 
 .env
+/node_modules/
 metrics.json

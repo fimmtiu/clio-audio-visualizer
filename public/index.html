@@ -1,0 +1,24 @@
+<html>
+  <head></head>
+  <body>
+    <script src="./js/howler.min.js"></script>
+    <script>
+      var crowd = new Howl({
+        src: ['./audio/crowd.mp3']
+      });
+
+      var monkey = new Howl({
+          src: ['./audio/monkey.mp3']
+        });
+      function beginSoundscape() {
+        crowd.play();
+
+        setTimeout(function() {
+          crowd.fade(1, 0, 1000);
+          monkey.play()
+        }, 1000);
+      }
+    </script>
+    <marquee><button onclick="beginSoundscape()">Experience the soothing sounds of chainsaws...in a rain forest</button></marquee>
+  </body>
+</html>
