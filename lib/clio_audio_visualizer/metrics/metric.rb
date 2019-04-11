@@ -29,8 +29,7 @@ module Metrics
     end
 
     def load(from, to)
-      results = DATADOG_API.get_points(datadog_query, from, to)
-      @value = process_results(results)
+      raise NotImplementedError
     end
 
     # The key this metric will be saved to in the resulting json

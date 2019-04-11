@@ -39,7 +39,10 @@ Use `bin/console` to test fetching & writing metrics.
 Instantiating the metrics:
 
 ```ruby
-metrics = Metrics::Loader.load("data/metric_definitions.json")
+# loading from Datadog
+metrics = Metrics::Loader.new.load("data/metric_definitions.json")
+# loading from a local file
+metrics = Metrics::Loader.new(data_file: "data/test_data.json").load("data/metric_definitions.json")
 ```
 
 Fetching metric, using values over the last minute:
