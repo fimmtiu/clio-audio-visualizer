@@ -1,6 +1,8 @@
-# ClioAudioVisualizer
+# Clio Audio Visualizer
 
 We like noise.
+
+This is hackathon code that was thrown together in a very brief period of time and should not be used as an example of how to do anything. Not intended for production, or indeed for any serious purpose at all.
 
 # Starting the front end
 
