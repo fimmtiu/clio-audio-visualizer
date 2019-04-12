@@ -1,16 +1,16 @@
-function adjustVolumesFromEvents(soundNamesAndScores) {
+function adjustVolumesFromEvents(soundConfigs) {
 	// always establish a base volume, in case it was previously silenced
 	Howler.volume(0.3);
 
-	for (var name in nameOfSoundsToObjectOfScoreAndType) {
+	for (var name in soundConfigs) {
 		if (actors[name]) {
 			const currentVolume = actors[name].volume();
 
 			if (hasPayloadRefreshed()) {
 				console.log("setting volume on actor");
-				const type = nameOfSoundsToObjectOfScoreAndType[name].type;
+				const type = soundConfigs[name].type;
 
-				targetVol = getTargetVolume(type, name, nameOfSoundsToObjectOfScoreAndType);
+				targetVol = getTargetVolume(type, name, soundConfigs);
 				actors[name].fade(currentVolume, targetVol, 250);
 				if (actors[name].playing() && actors[name].loop()) {
 					console.log("name:", name, "currentVolume:", currentVolume, "newVolume:", targetVol)
@@ -24,13 +24,13 @@ function adjustVolumesFromEvents(soundNamesAndScores) {
 	}
 }
 
-function getTargetVolume(type, name, nameOfSoundsToObjectOfScoreAndType) {
+function getTargetVolume(type, name, soundConfigs) {
 	if (type == "normally_audible") {
-		targetVol = scaleVolume(nameOfSoundsToObjectOfScoreAndType[name].score, -1, 1, 0, 1)
+		targetVol = scaleVolume(soundConfigs[name].volume, -1, 1, 0, 1)
 	} else {
-		targetVol = Math.abs(nameOfSoundsToObjectOfScoreAndType[name].score)
+		targetVol = Math.abs(soundConfigs[name].volume)
 	}
-	return targetVol;
+	return targetVol * soundConfigs[name].multiplier;
 }
 
 function scaleVolume(num, in_min, in_max, out_min, out_max, event_type){
