@@ -31,8 +31,8 @@ function loadActors() {
     loop: false
   });
 
-  actors["monkeys_quiet"] = new Howl({
-    src: ['./audio/forest/monkeys_quiet.wav'],
+  actors["monkeys_loud"] = new Howl({
+    src: ['./audio/forest/monkeys_loud.wav'],
     volume: 0.0,
     loop: true
   });
