@@ -10,6 +10,13 @@ function adjustVolumesFromEvents(soundNamesAndScores) {
 				console.log("setting volume on actor");
 				targetVol = scaleVolume(soundNamesAndScores[name], -1, 1, 0, 1)
 				actors[name].fade(currentVolume, targetVol, 250);
+				if (actors[name].playing() && actors[name].loop()) {
+					console.log("name:", name, "currentVolume:", currentVolume, "newVolume:", soundNamesAndScores[name])
+					actors[name].fade(currentVolume, soundNamesAndScores[name], 250);
+				} else if (!actors[name].playing()) {
+					console.log("name:", name, "currentVolume:", currentVolume)
+					actors[name].play();
+				}
 			}
 		}
 	}
@@ -34,7 +41,7 @@ function loadForest() {
 	actors["forest"].play();
 	actors["stream"].play();
 	actors["frogs_insects"].play();
-	actors["monkeys_quiet"].play();
+	actors["monkeys_loud"].play();
 	actors["crows"].play();
 	actors["wind"].play();
 
