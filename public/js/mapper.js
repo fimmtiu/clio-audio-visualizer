@@ -1,9 +1,9 @@
 const metricsToSoundNamesForest = {
   "HTTP requests per second": "forest",
-  "HTTP 503 errors": "monkey",
-  "Database slow queries per second": "crow",
+  "HTTP 503 errors": "monkeys_quiet",
+  "Database slow queries per second": "crows",
   "Database SELECT statements per second": "stream",
-  "Resque low queue latency": "insects",
+  "Resque low queue latency": "frogsinsects",
   "Deploy": "happy_goat",
   "Resque jobs performed per second": "wind"
 }
