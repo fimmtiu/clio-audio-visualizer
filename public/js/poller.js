@@ -14,13 +14,18 @@ function getDataFromServer() {
 }
 
 function mapNames(eventData, mapper) {
-  let nameOfSoundsAndScores = {};
+  let nameOfSoundsToObjectOfScoreAndType = {};
 
   for (var k in eventData) {
-    const nameOfSound = mapper[k];
-    nameOfSoundsAndScores[nameOfSound] = eventData[k];
+    if (k !== "last_updated_at") {
+      const soundObj = mapper[k];
+      nameOfSoundsToObjectOfScoreAndType[soundObj.sound] = {
+        score: eventData[k],
+        type: soundObj.type
+      };
+    }
   }
-  return nameOfSoundsAndScores;
+  return nameOfSoundsToObjectOfScoreAndType;
 }
 
 function processVolumeChangesFromNewEvents(callback, errorCallback, mapper) {
