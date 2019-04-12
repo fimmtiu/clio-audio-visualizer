@@ -33,6 +33,7 @@ end
 
 until stream.done?
   if data_file
+    # We pick 0 and 2**32 to enusure we grab *everything* in the data file
     metrics = stream.read_data(Time.at(0), Time.at(2**32))
   else
     metrics = stream.read_data(Time.now - interval, Time.now)
