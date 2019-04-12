@@ -43,6 +43,12 @@ function loadActors() {
     loop: true
   });
 
+  actors["wind"] = new Howl({
+	src: ['./audio/forest/wind.wav"],
+	volume: 0.0,
+	loop: true
+  });
+
   // OCEAN
 
   actors["dolphins"] = new Howl({
