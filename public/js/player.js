@@ -27,6 +27,7 @@ function loadForest() {
 	actors["stream"].play();
 	actors["frogs_insects"].play();
 	actors["monkeys_quiet"].play();
+	actors["crows"].play();
 
 	actors["forest"].fade(0, 0.5, 500)
 	actors["stream"].fade(0, 0.5, 500)
@@ -34,7 +35,7 @@ function loadForest() {
 
 function loadOcean() {
 	actors["ocean_beach"].play();
-	actors["seagulls_loop"].plaby();
+	actors["seagulls_loop"].play();
 	actors["dolphins"].play();
 	actors["man_drowning"].play();
 	actors["sea_lions"].play();
