@@ -49,5 +49,9 @@ module Metrics
         -(difference.to_f / min_difference)
       end
     end
+
+    def result
+      [key, variance]
+    end
   end
 end

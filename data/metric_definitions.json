@@ -40,5 +40,10 @@
     "too_low": 4,
     "expected": 16,
     "too_high": 40
+  },
+  {
+    "name": "Deploy",
+    "is_event": true,
+    "tags": ["env:production", "event_type:deploy", "region:prod_us_a"]
   }
 ]

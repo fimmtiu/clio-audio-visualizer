@@ -11,15 +11,25 @@ module Streams
       metrics = []
       # Could probably just reduce here...
       next_response_set.each do |response|
-        metric_definition = @metric_definitions.find { |definition| definition["metric"] == response[1]["query"] }
-        next if metric_definition.nil?
 
-        pointlist = response[1].dig("series", 0, "pointlist") || []
-        points = pointlist.select do |point|
-          Time.at(point.first / 1000).between?(from, to)
+        if response[1]["events"]
+          events_in_time = response[1]["events"].select do |event|
+            Time.at(event["date_happened"]).between?(from, to)
+          end
+          metric_definition = @metric_definitions.find { |definition| definition["is_event"] }
+
+          metrics << Metrics::Event.new(metric_definition, events_in_time.count)
+        else
+          metric_definition = @metric_definitions.find { |definition| definition["metric"] && definition["metric"] == response[1]["query"] }
+          next if metric_definition.nil?
+
+          pointlist = response[1].dig("series", 0, "pointlist") || []
+          points = pointlist.select do |point|
+            Time.at(point.first / 1000).between?(from, to)
+          end
+
+          metrics << Metrics::Metric.new(metric_definition, points)
         end
-
-        metrics << Metrics::Metric.new(metric_definition, points)
       end
 
       metrics

@@ -8,12 +8,12 @@ RSpec.describe Metrics::Writer do
   describe "#write" do
     it "writes a well-formatted JSON file" do
       metrics = [
-        double(key: "foo", variance: -0.7),
-        double(key: "bar", variance: 0.0),
-        double(key: "baz", variance: 1.0),
+        double(result: ["foo", -0.7]),
+        double(result: ["bar", 0.0]),
+        double(result: ["baz", 1.0]),
       ]
       subject.write(metrics)
-      expect(File.read(filename)).to eq "{\"foo\":-0.7,\"bar\":0.0,\"baz\":1.0,\"last_updated_at\":1555048800.0}\n"
+      expect(File.read(filename)).to eq "{\"foo\":-0.7,\"bar\":0.0,\"baz\":1.0,\"last_updated_at\":1555052400.0}\n"
     end
   end
 end
