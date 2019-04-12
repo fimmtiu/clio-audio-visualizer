@@ -11,7 +11,7 @@ module Metrics
     end
 
     def write(metrics)
-      summary = metrics.map { |metric| [metric.key, metric.variance] }.to_h
+      summary = metrics.map(&:result).to_h
       summary["last_updated_at"] = now.to_f
 
       File.open(file_path, 'w') do |file|
