@@ -33,3 +33,5 @@ echo "Switch the theme to 'Ocean' midway through."
 echo -n "Playing normal forest/ocean noises... "
 ruby -Ilib exe/audio-visualizer-back-end -i 60 data/test_data_normal.json >/dev/null
 echo "done."
+
+rm -f public/data.json
