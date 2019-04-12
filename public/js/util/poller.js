@@ -24,13 +24,21 @@ function mapNames(eventData, mapper) {
 }
 
 function processVolumeChangesFromNewEvents(callback, errorCallback, mapper) {
+  window.poll.previousId = window.poll.currentId;
   getDataFromServer(errorCallback).then(function(data) {
     if (typeof data === "undefined") {
       errorCallback();
     } else {
       const mappings = mapNames(data, mapper);
+      window.poll.currentId = data.last_updated_at;
       callback(mappings);
     }
     setTimeout(processVolumeChangesFromNewEvents.bind(this, callback, errorCallback, mapper), 2000);
   });
 }
+
+function hasPayloadRefreshed() {
+  return window.poll.currentId !== window.poll.previousId;
+}
+
+window.poll = {};
