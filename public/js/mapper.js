@@ -11,7 +11,7 @@ const metricsToSoundNamesForest = {
 const metricsToSoundNamesOcean = {
   "HTTP requests per second": "ocean_beach",
   "HTTP 503 errors": "man_drowning",
-  "Database slow queries per second": "crow",
+  "Database slow queries per second": "crows",
   "Database SELECT statements per second": "seagulls_loop",
   "Resque low queue latency": "parrot",
   "Deploy": "ship_horn_oneshot",
