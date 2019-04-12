@@ -13,7 +13,7 @@ module Metrics
         response = DATADOG_API.get_points(metric_definition["metric"], from, to)
         points = response.dig(1, "series", 0, "pointlist") || []
 
-        Metric2.new(metric_definition, points)
+        Metric.new(metric_definition, points)
       end
     end
 

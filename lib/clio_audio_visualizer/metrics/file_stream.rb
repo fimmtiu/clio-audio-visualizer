@@ -19,7 +19,7 @@ module Metrics
           Time.at(point.first / 1000).between?(from, to)
         end
 
-        metrics << Metric2.new(metric_definition, points)
+        metrics << Metric.new(metric_definition, points)
       end
 
       metrics
