@@ -10,6 +10,7 @@ module Metrics
 
     def write(metrics)
       summary = metrics.map { |metric| [metric.key, metric.variance] }.to_h
+      summary["last_updated_at"] = Time.now.to_f
 
       File.open(file_path, 'w') do |file|
         puts(summary.to_json)
