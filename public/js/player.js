@@ -44,9 +44,7 @@ function beginSoundscape(themeName) {
 
 	let mapper = metricsToSoundNamesForest;
 
-	if (themeName == "Forest") {
-		loadForest();
-	} else if (themeName == "Ocean") {
+	if (themeName == "Ocean") {
 		mapper = metricsToSoundNamesOcean;
 		loadOcean();
 	} else {
