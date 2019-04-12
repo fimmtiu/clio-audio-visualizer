@@ -58,10 +58,10 @@ function beginSoundscape(themeName) {
 	Howler.volume(0.3);
 	loadActors();
 
-	let mapper = metricsToSoundNamesForest;
+	let mapper = metricsToSoundNames["Forest"];
 
 	if (themeName == "Ocean") {
-		mapper = metricsToSoundNamesOcean;
+		mapper = metricsToSoundNames["Ocean"];
 		loadOcean();
 	} else {
 		loadForest();
