@@ -69,6 +69,12 @@ function loadActors() {
     loop: true
   });
 
+  actors["parrot"] = new Howl({
+	src: ['./audio/ocean/parrots.wav'],
+	volume: 0.0,
+	loop: true
+  });
+	
   actors["sea_lions"] = new Howl({
     src: ['./audio/ocean/sea_lions.wav'],
     volume: 0.0,
