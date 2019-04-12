@@ -44,7 +44,7 @@ function loadActors() {
   });
 
   actors["wind"] = new Howl({
-	src: ['./audio/forest/wind.wav"],
+	src: ['./audio/forest/wind.wav'],
 	volume: 0.0,
 	loop: true
   });
