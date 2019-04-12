@@ -47,6 +47,8 @@ function loadForest() {
 
 	actors["forest"].fade(0, 0.5, 500);
 	actors["stream"].fade(0, 0.5, 500);
+	actors["frogs_insects"].fade(0, 0.5, 500);
+	actors["wind"].fade(0, 0.5, 500);
 }
 
 function loadOcean() {
@@ -59,6 +61,8 @@ function loadOcean() {
 
 	actors["ocean_beach"].fade(0, 0.5, 500);
 	actors["seagulls_loop"].fade(0, 0.5, 500);
+	actors["dolphins"].fade(0, 0.5, 500);
+	actors["parrot"].fade(0, 0.5, 500);
 }
 
 function beginSoundscape(themeName) {
