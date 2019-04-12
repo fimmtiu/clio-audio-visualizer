@@ -59,12 +59,6 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/fimmti
 
 ## TODO
 
-* Signal deploys going out with a happy goat sound.
-
-```
-dd.stream(start_at, end_at, tags: ["env:production", "event_type:deploy", "region:prod_us_a"])[1]["events"].count
-```
-
 * Take non-peak times into account instead of going crazy at the end of the day.
 
 * Support EU, CA, and Grow. (Currently only supports Manage PROD-US.)
