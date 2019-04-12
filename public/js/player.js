@@ -31,9 +31,10 @@ function loadForest() {
 	actors["frogs_insects"].play();
 	actors["monkeys_quiet"].play();
 	actors["crows"].play();
+	actors["wind"].play();
 
-	actors["forest"].fade(0, 0.5, 500)
-	actors["stream"].fade(0, 0.5, 500)
+	actors["forest"].fade(0, 0.5, 500);
+	actors["stream"].fade(0, 0.5, 500);
 }
 
 function loadOcean() {
@@ -43,8 +44,8 @@ function loadOcean() {
 	actors["man_drowning"].play();
 	actors["sea_lions"].play();
 
-	actors["ocean_beach"].fade(0, 0.5, 500)
-	actors["seagulls_loop"].fade(0, 0.5, 500)
+	actors["ocean_beach"].fade(0, 0.5, 500);
+	actors["seagulls_loop"].fade(0, 0.5, 500);
 }
 
 function beginSoundscape(themeName) {
