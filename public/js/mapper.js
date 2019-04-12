@@ -55,12 +55,12 @@ const metricsToSoundNames = {
     "Database SELECT statements per second": {
       "sound": "seagulls_loop",
       "type": "normally_audible",
-      "multiplier": 1.0
+      "multiplier": 0.5
     },
     "Resque low queue latency": {
       "sound": "parrot",
       "type": "normally_audible",
-      "multiplier": 1.0
+      "multiplier": 0.8
     },
     "Deploy": {
       "sound": "ship_horn_oneshot",
@@ -70,7 +70,7 @@ const metricsToSoundNames = {
     "Resque jobs performed per second": {
       "sound": "dolphins",
       "type": "normally_audible",
-      "multiplier": 1.0
+      "multiplier": 0.7
     }
   }
 }
