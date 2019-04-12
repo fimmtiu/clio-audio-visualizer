@@ -55,6 +55,7 @@ function loadOcean() {
 	actors["dolphins"].play();
 	actors["man_drowning"].play();
 	actors["sea_lions"].play();
+	actors["parrot"].play();
 
 	actors["ocean_beach"].fade(0, 0.5, 500);
 	actors["seagulls_loop"].fade(0, 0.5, 500);
