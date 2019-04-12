@@ -17,7 +17,7 @@ def set_variance(variance_key, value)
     current = metrics.map { |m| [m["name"], 0.0] }.to_h
   end
   current[variance_key] = value
-  current["written_at"] = Time.now.to_f
+  current["last_updated_at"] = Time.now.to_f
 
   File.open(file_path, "w") do |file|
     file.puts(current.to_json)
