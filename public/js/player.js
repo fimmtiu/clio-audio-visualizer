@@ -8,7 +8,13 @@ function adjustVolumesFromEvents(soundNamesAndScores) {
 
 			if (hasPayloadRefreshed()) {
 				console.log("setting volume on actor");
-				actors[name].fade(currentVolume, soundNamesAndScores[name], 250);
+				if (actors[name].playing() && actors[name].loop()) {
+					console.log("name:", name, "currentVolume:", currentVolume, "newVolume:", soundNamesAndScores[name])
+					actors[name].fade(currentVolume, soundNamesAndScores[name], 250);
+				} else if (!actors[name].playing()) {
+					console.log("name:", name, "currentVolume:", currentVolume)
+					actors[name].play();
+				}
 			}
 		}
 	}
