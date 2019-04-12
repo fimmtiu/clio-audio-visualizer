@@ -44,10 +44,8 @@ module Metrics
 
       # Translate the difference from a value to a float in the [-1.0, 1.0] range.
       if value > expected
-        puts "result: #{difference.to_f / max_difference}"
         difference.to_f / max_difference
       else
-        puts "result: #{difference.to_f / min_difference}"
         -(difference.to_f / min_difference)
       end
     end
