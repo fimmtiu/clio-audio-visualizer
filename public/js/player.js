@@ -1,6 +1,6 @@
 function adjustVolumesFromEvents(soundConfigs) {
 	// always establish a base volume, in case it was previously silenced
-	Howler.volume(0.3);
+	Howler.volume(0.5);
 
 	for (var name in soundConfigs) {
 		if (actors[name]) {
@@ -77,7 +77,7 @@ function loadOcean() {
 }
 
 function beginSoundscape(themeName) {
-	Howler.volume(0.3);
+	Howler.volume(0.5);
 	loadActors();
 
 	let mapper = metricsToSoundNames["Forest"];
