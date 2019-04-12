@@ -14,7 +14,7 @@ module Streams
 
         if response[1]["events"]
           events_in_time = response[1]["events"].select do |event|
-            Time.at(event["date_happened"] / 1000).between?(from, to)
+            Time.at(event["date_happened"]).between?(from, to)
           end
           metric_definition = @metric_definitions.find { |definition| definition["is_event"] }
 

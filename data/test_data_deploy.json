@@ -5,7 +5,7 @@
       {
         "events": [
           {
-            "date_happened": 1554999804,
+            "date_happened": 1555002848,
             "alert_type": "info",
             "is_aggregate": false,
             "title": "Branch master (at a07e4f7fcfa7cd3217e56c785efada78bf05443f) deployed as release 20190411162153 by deploy",

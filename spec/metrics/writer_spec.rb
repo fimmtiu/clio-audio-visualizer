@@ -13,7 +13,7 @@ RSpec.describe Metrics::Writer do
         double(result: ["baz", 1.0]),
       ]
       subject.write(metrics)
-      expect(File.read(filename)).to eq "{\"foo\":-0.7,\"bar\":0.0,\"baz\":1.0,\"last_updated_at\":1555048800.0}\n"
+      expect(File.read(filename)).to eq "{\"foo\":-0.7,\"bar\":0.0,\"baz\":1.0,\"last_updated_at\":1555052400.0}\n"
     end
   end
 end
