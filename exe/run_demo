@@ -6,28 +6,28 @@ set -euo pipefail
 echo -n "Playing normal forest noises... "
 ruby -Ilib exe/audio-visualizer-back-end -i 8 data/test_data_normal.json >/dev/null
 echo "done."
-read
+#read
 
 # Spike in database SELECT statements (15 seconds, loud stream)
 echo -n "Playing SELECT spike demo... "
 ruby -Ilib exe/audio-visualizer-back-end -i 5 data/test_data_select_spike.json >/dev/null
 echo "done."
-read
+#read
 
 # Spike in HTTP 503 errors (15 seconds, angry monkeys)
 echo -n "Playing 503 spike demo... "
 ruby -Ilib exe/audio-visualizer-back-end -i 5 data/test_data_503.json >/dev/null
 echo "done."
-read
+#read
 
 # Demo of notification when we deploy. (6 seconds, happy goat)
 echo -n "Playing deploy notification demo... "
 ruby -Ilib exe/audio-visualizer-back-end -i 5 data/test_data_deploy.json >/dev/null
 echo "done."
-read
+#read
 
 # Normal baseline ocean noise (15 seconds)
 echo "Switch the theme to 'Ocean' midway through."
 echo -n "Playing normal forest/ocean noises... "
-ruby -Ilib exe/audio-visualizer-back-end -i 15 data/test_data_normal.json >/dev/null
+ruby -Ilib exe/audio-visualizer-back-end -i 60 data/test_data_normal.json >/dev/null
 echo "done."
