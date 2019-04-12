@@ -8,7 +8,7 @@ const metricsToSoundNames = {
     "HTTP 503 errors": {
       "sound": "monkeys_loud",
       "type": "normally_silent",
-      "multiplier": 1.0
+      "multiplier": 1.2
     },
     "Database slow queries per second": {
       "sound": "crows",
