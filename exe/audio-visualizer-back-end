@@ -45,8 +45,3 @@ until stream.done?
   # TO DO: Take the time spent in the loop into account when calculating how long to sleep.
   sleep(interval)
 end
-
-# When the back end exits, delete the status file to tell the front end to be quiet.
-at_exit do
-  File.unlink(STATUS_FILE)
-end
