@@ -22,7 +22,7 @@ module Metrics
       points.map!(&:last)
 
       case op
-      when "sum" then points.sum
+      when "sum" then points.max
       when "avg" then points.last
       when "max" then points.max
       else 0
