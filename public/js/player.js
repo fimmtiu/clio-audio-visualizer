@@ -30,6 +30,7 @@ function loadForest() {
 	actors["stream"].play();
 	actors["frogs_insects"].play();
 	actors["monkeys_quiet"].play();
+	actors["crows"].play();
 
 	actors["forest"].fade(0, 0.5, 500)
 	actors["stream"].fade(0, 0.5, 500)
