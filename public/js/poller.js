@@ -14,13 +14,19 @@ function getDataFromServer() {
 }
 
 function mapNames(eventData, mapper) {
-  let nameOfSoundsAndScores = {};
+  let soundConfigs = {};
 
   for (var k in eventData) {
-    const nameOfSound = mapper[k];
-    nameOfSoundsAndScores[nameOfSound] = eventData[k];
+    if (k !== "last_updated_at") {
+      const soundObj = mapper[k];
+      soundConfigs[soundObj.sound] = {
+        volume: eventData[k],
+        type: soundObj.type,
+        multiplier: soundObj.multiplier,
+      };
+    }
   }
-  return nameOfSoundsAndScores;
+  return soundConfigs;
 }
 
 function processVolumeChangesFromNewEvents(callback, errorCallback, mapper) {
