@@ -22,7 +22,7 @@ read
 
 # Demo of notification when we deploy. (6 seconds, happy goat)
 echo -n "Playing deploy notification demo... "
-ruby -Ilib exe/audio-visualizer-back-end -i 3 data/test_data_deploy.json >/dev/null
+ruby -Ilib exe/audio-visualizer-back-end -i 5 data/test_data_deploy.json >/dev/null
 echo "done."
 read
 
