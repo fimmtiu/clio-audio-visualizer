@@ -2,6 +2,8 @@
 
 set -euo pipefail
 
+rm -f public/data.json
+
 # Normal baseline forest noise (8 seconds)
 echo -n "Playing normal forest noises... "
 ruby -Ilib exe/audio-visualizer-back-end -i 8 data/test_data_normal.json >/dev/null
@@ -16,13 +18,13 @@ echo "done."
 
 # Spike in HTTP 503 errors (15 seconds, angry monkeys)
 echo -n "Playing 503 spike demo... "
-ruby -Ilib exe/audio-visualizer-back-end -i 5 data/test_data_503.json >/dev/null
+ruby -Ilib exe/audio-visualizer-back-end -i 4 data/test_data_503.json >/dev/null
 echo "done."
 #read
 
 # Demo of notification when we deploy. (6 seconds, happy goat)
 echo -n "Playing deploy notification demo... "
-ruby -Ilib exe/audio-visualizer-back-end -i 5 data/test_data_deploy.json >/dev/null
+ruby -Ilib exe/audio-visualizer-back-end -i 4 data/test_data_deploy.json >/dev/null
 echo "done."
 #read
 
