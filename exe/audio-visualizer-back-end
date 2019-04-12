@@ -21,17 +21,22 @@ if data_file.nil? && interval < 60
   exit 1
 end
 
-metrics = Metrics::Loader.new(data_file: data_file).load(METRICS_FILE)
 
-until metrics.all?(&:done?)
-  # Load the data from Datadog or a file.
-  metrics.reject(&:done?).each do |metric|
-    if data_file
-      # The contents of the file are in the past, so we have to fake it.
-      metric.load(Time.at(0), Time.at(2**32))
-    else
-      metric.load(Time.now - interval, Time.now)
-    end
+definitions = JSON.parse(File.read(METRICS_FILE))
+
+if data_file
+  stream = Streams::File.new(definitions, data_file)
+else
+  stream = Streams::Datadog.new(definitions)
+end
+
+
+until stream.done?
+  if data_file
+    # We pick 0 and 2**32 to enusure we grab *everything* in the data file
+    metrics = stream.read_data(Time.at(0), Time.at(2**32))
+  else
+    metrics = stream.read_data(Time.now - interval, Time.now)
   end
 
   # Write the metric variances to the status file.

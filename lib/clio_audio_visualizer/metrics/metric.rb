@@ -2,39 +2,31 @@ module Metrics
   class Metric
     attr_reader :value
 
-    def initialize(definition)
+    def initialize(definition, points)
       @definition = definition
+      @value = process_points(points)
     end
 
     def datadog_query
       @definition["metric"]
     end
 
+    # The key this metric will be saved to in the resulting json
+    def key
+      @definition["name"]
+    end
+
     # The function that is called when processing the results from datadog
-    def process_results(results)
+    def process_points(points)
       op = @definition["metric"][0,3]
-      pointlist = results.dig(1, "series", 0, "pointlist") || []
-      pointlist.map!(&:last)
+      points.map!(&:last)
 
       case op
-      when "sum" then pointlist.sum
-      when "avg" then pointlist.last
-      when "max" then pointlist.max
+      when "sum" then points.sum
+      when "avg" then points.last
+      when "max" then points.max
       else 0
       end
-    end
-
-    def load(from, to)
-      results = read_data(from, to)
-      @value = process_results(results)
-    end
-
-    def read_data(_from, _to)
-      raise NotImplementedError
-    end
-
-    def done?
-      raise NotImplementedError
     end
 
     # How far off the expected value it is. -1.0 is really, really low; 1.0 is super high.
@@ -56,11 +48,6 @@ module Metrics
       else
         -(difference.to_f / min_difference)
       end
-    end
-
-    # The key this metric will be saved to in the resulting json
-    def key
-      @definition["name"]
     end
   end
 end
