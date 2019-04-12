@@ -11,8 +11,8 @@ function adjustVolumesFromEvents(soundNamesAndScores) {
 				targetVol = scaleVolume(soundNamesAndScores[name], -1, 1, 0, 1)
 				actors[name].fade(currentVolume, targetVol, 250);
 				if (actors[name].playing() && actors[name].loop()) {
-					console.log("name:", name, "currentVolume:", currentVolume, "newVolume:", soundNamesAndScores[name])
-					actors[name].fade(currentVolume, soundNamesAndScores[name], 250);
+					console.log("name:", name, "currentVolume:", currentVolume, "newVolume:", targetVol)
+					actors[name].fade(currentVolume, targetVol, 250);
 				} else if (!actors[name].playing()) {
 					console.log("name:", name, "currentVolume:", currentVolume)
 					actors[name].play();
