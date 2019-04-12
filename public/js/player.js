@@ -34,7 +34,7 @@ function loadForest() {
 
 function loadOcean() {
 	actors["ocean_beach"].play();
-	actors["seagulls_loop"].plaby();
+	actors["seagulls_loop"].play();
 	actors["dolphins"].play();
 	actors["man_drowning"].play();
 	actors["sea_lions"].play();
