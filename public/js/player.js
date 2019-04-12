@@ -8,10 +8,15 @@ function adjustVolumesFromEvents(soundNamesAndScores) {
 
 			if (hasPayloadRefreshed()) {
 				console.log("setting volume on actor");
-				actors[name].fade(currentVolume, soundNamesAndScores[name], 250);
+				targetVol = scaleVolume(soundNamesAndScores[name], -1, 1, 0, 1)
+				actors[name].fade(currentVolume, targetVol, 250);
 			}
 		}
 	}
+}
+
+function scaleVolume(num, in_min, in_max, out_min, out_max){
+	return (num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
 
 function switchTheme() {
