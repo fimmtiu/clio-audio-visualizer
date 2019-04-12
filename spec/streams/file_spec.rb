@@ -1,6 +1,6 @@
 require "spec_helper"
 
-RSpec.describe Metrics::FileStream do
+RSpec.describe Streams::File do
   let(:time_with_data) { Time.at(1555002800) }
   let(:definitions) { JSON.parse(File.read("data/metric_definitions.json")) }
   subject { described_class.new([definitions.first], "data/test_data_too_high.json") }

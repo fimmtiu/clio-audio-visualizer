@@ -1,8 +1,8 @@
-module Metrics
-  class FileStream
+module Streams
+  class File
     def initialize(metric_definitions, file_path)
       @metric_definitions = metric_definitions
-      @data = JSON.parse(File.read(file_path))
+      @data = JSON.parse(::File.read(file_path))
     end
 
     def read_data(from, to)
@@ -19,7 +19,7 @@ module Metrics
           Time.at(point.first / 1000).between?(from, to)
         end
 
-        metrics << Metric.new(metric_definition, points)
+        metrics << Metrics::Metric.new(metric_definition, points)
       end
 
       metrics

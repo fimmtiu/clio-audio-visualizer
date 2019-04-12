@@ -25,9 +25,9 @@ end
 definitions = JSON.parse(File.read(METRICS_FILE))
 
 if data_file
-  stream = Metrics::FileStream.new(definitions, data_file)
+  stream = Streams::File.new(definitions, data_file)
 else
-  stream = Metrics::DatadogStream.new(definitions)
+  stream = Streams::Datadog.new(definitions)
 end
 
 
