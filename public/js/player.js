@@ -1,48 +1,3 @@
-Howler.volume(0.3);
-let actors = {}
-
-actors["crows"] = new Howl({
-	src: ['./audio/forest/crows.wav'],
-	volume: 0.0,
-	loop: true
-});
-
-actors["forest"] = new Howl({
-	src: ['./audio/forest/forest_base.wav'],
-	volume: 0.0,
-	loop: true
-});
-
-actors["frogs_insects"] = new Howl({
-	src: ['./audio/forest/frogs_insects.wav'],
-	volume: 0.0,
-	loop: true
-});
-
-actors["goat_scream"] = new Howl({
-	src: ['./audio/forest/goat_scream.wav'],
-	volume: 1.0,
-	loop: false
-});
-
-actors["happy_goat"] = new Howl({
-	src: ['./audio/forest/happy_goat.wav'],
-	volume: 1.0,
-	loop: false
-});
-
-actors["monkeys_quiet"] = new Howl({
-	src: ['./audio/forest/monkeys_quiet.wav'],
-	volume: 1.0,
-	loop: true
-});
-
-actors["stream"] = new Howl({
-	src: ['./audio/forest/stream_base.wav'],
-	volume: 0.0,
-	loop: true
-});
-
 function adjustVolumesFromEvents(soundNamesAndScores) {
 	// always establish a base volume, in case it was previously silenced
 	Howler.volume(0.3);
@@ -56,16 +11,47 @@ function adjustVolumesFromEvents(soundNamesAndScores) {
 	}
 }
 
+function switchTheme() {
+	Howler.unload(); // stop all playing sounds
+
+	const themeName = event.target.value;
+	beginSoundscape(themeName);
+}
+
 function errorCallback() {
 	Howler.volume(0);
 }
 
-function beginSoundscape() {
+function loadForest() {
 	actors["forest"].play();
 	actors["stream"].play();
 
 	actors["forest"].fade(0, 0.5, 2500)
 	actors["stream"].fade(0, 0.5, 4000)
-
-	processVolumeChangesFromNewEvents(adjustVolumesFromEvents, errorCallback);
 }
+
+function loadOcean() {
+	actors["ocean_beach"].play();
+	actors["seagulls_loop"].play();
+
+	actors["ocean_beach"].fade(0, 0.5, 2500)
+	actors["seagulls_loop"].fade(0, 0.5, 4000)
+}
+
+function beginSoundscape(themeName) {
+	Howler.volume(0.3);
+	loadActors();
+
+	let mapper = metricsToSoundNamesForest;
+
+	if (themeName == "Ocean") {
+		mapper = metricsToSoundNamesOcean;
+		loadOcean();
+	} else {
+		loadForest();
+	}
+
+	processVolumeChangesFromNewEvents(adjustVolumesFromEvents, errorCallback, mapper);
+}
+
+beginSoundscape();
