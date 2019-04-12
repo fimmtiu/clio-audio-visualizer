@@ -29,7 +29,7 @@ function loadForest() {
 	actors["forest"].play();
 	actors["stream"].play();
 	actors["frogs_insects"].play();
-	actors["monkeys_quiet"].play();
+	actors["monkeys_loud"].play();
 	actors["crows"].play();
 	actors["wind"].play();
 
